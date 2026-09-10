@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>I am So Sorry Disha ( Bhondiiii) 🥺❤️</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Sacramento&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Linked External CSS File (Cache Busted) -->
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+<body>
+
+  <!-- Floating Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Welcome Tap-To-Open Overlay (100% Guaranteed Romantic Music Autoplay) -->
+  <div id="welcomeOverlay" class="welcome-overlay" title="Tap anywhere to enter!">
+    <div class="welcome-card">
+      <div class="envelope-icon">💌</div>
+      <h2 style="font-size: 1.35rem; font-weight: 800; color: #ff3b68; margin-bottom: 6px;">For My Dearest Disha (Bhondiiii)</h2>
+      <p style="font-size: 0.95rem; color: #5a3040; margin-bottom: 18px; line-height: 1.4;">
+        Aapke liye ek bohot zaroori apology message... 🥺👉👈
+      </p>
+      <button class="welcome-btn" id="openMsgBtn">
+        <span>Tap To Open</span> <span>💖</span>
+      </button>
+      <div style="font-size: 0.78rem; color: #9c687b; margin-top: 12px;">
+        (Tap anywhere on screen to enter)
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Music Audio Element -->
+  <audio id="bgAudio" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+    <source src="music.mpeg" type="audio/mpeg">
+  </audio>
+
+  <!-- Top Action Bar -->
+  <div class="top-bar">
+    <div class="badge-emergency">
+      <span>🚨</span>
+      <span>DISHA IS VERY ANGRY!</span>
+    </div>
+
+    <button id="musicToggle" class="audio-btn" title="Toggle romantic background song">
+      <span id="musicIcon">🎵</span>
+      <span id="musicText">Play Song</span>
+    </button>
+  </div>
+
+  <!-- Primary Card -->
+  <div class="main-card">
+
+    <!-- Cute Animated SVG Bear Character -->
+    <div class="character-stage" id="bearStage" title="Tap me Disha! 🥺">
+      <svg class="bear-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ears -->
+        <circle cx="55" cy="55" r="28" fill="#e8a598"/>
+        <circle cx="55" cy="55" r="17" fill="#fcd5ce"/>
+        <circle cx="145" cy="55" r="28" fill="#e8a598"/>
+        <circle cx="145" cy="55" r="17" fill="#fcd5ce"/>
+
+        <!-- Body -->
+        <ellipse cx="100" cy="155" rx="60" ry="45" fill="#e8a598"/>
+        <ellipse cx="100" cy="158" rx="42" ry="32" fill="#fff1ed"/>
+
+        <!-- Head -->
+        <circle cx="100" cy="98" r="62" fill="#f0b2a6"/>
+
+        <!-- Cheeks / Blush -->
+        <circle id="blushLeft" cx="62" cy="115" r="12" fill="#ff758f" opacity="0.4"/>
+        <circle id="blushRight" cx="138" cy="115" r="12" fill="#ff758f" opacity="0.4"/>
+
+        <!-- Snout -->
+        <ellipse cx="100" cy="114" rx="25" ry="18" fill="#fff1ed"/>
+        <polygon points="94,106 106,106 100,113" fill="#593c47"/>
+
+        <!-- Mouth -->
+        <path id="bearMouth" d="M 92 120 Q 100 112 108 120" stroke="#593c47" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+        <!-- Sad Puppy Eyes with Droopy Brows -->
+        <g id="sadEyes">
+          <ellipse cx="73" cy="92" rx="9" ry="11" fill="#3a232e"/>
+          <circle cx="70" cy="88" r="4" fill="#ffffff"/>
+          <circle cx="76" cy="95" r="2" fill="#ffffff"/>
+          <path d="M 64 78 Q 74 71 82 78" stroke="#593c47" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+          <ellipse cx="127" cy="92" rx="9" ry="11" fill="#3a232e"/>
+          <circle cx="124" cy="88" r="4" fill="#ffffff"/>
+          <circle cx="130" cy="95" r="2" fill="#ffffff"/>
+          <path d="M 118 78 Q 126 71 136 78" stroke="#593c47" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- Happy Smiling Eyes -->
+        <g id="happyEyes" style="display: none;">
+          <path d="M 64 92 Q 74 78 84 92" stroke="#3a232e" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <path d="M 116 92 Q 126 78 136 92" stroke="#3a232e" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- Crying Tears -->
+        <g id="bearTears">
+          <ellipse class="tear-stream" cx="72" cy="107" rx="3.5" ry="6" fill="#70d6ff"/>
+          <ellipse class="tear-stream" cx="128" cy="107" rx="3.5" ry="6" fill="#70d6ff"/>
+        </g>
+
+        <!-- Hands -->
+        <circle cx="68" cy="148" r="14" fill="#e8a598"/>
+        <circle cx="132" cy="148" r="14" fill="#e8a598"/>
+
+        <!-- Little Sorry Note for Disha -->
+        <g id="sorrySign">
+          <rect x="42" y="142" width="116" height="34" rx="8" fill="#fff" stroke="#ffb3c1" stroke-width="2"/>
+          <text x="100" y="164" font-family="'Outfit', sans-serif" font-weight="800" font-size="11.5" fill="#ff3b68" text-anchor="middle">SORRY DISHA 🥺</text>
+        </g>
+
+        <!-- Big Heart (on forgiveness) -->
+        <g id="celebrateHeart" style="display: none;" class="pulsing-heart">
+          <path d="M 100 132 C 85 110, 50 125, 75 160 L 100 182 L 125 160 C 150 125, 115 110, 100 132 Z" fill="#ff3366"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Active State: Apology + Runaway NO -->
+    <div id="askState">
+      <h1 class="title">I'm Truly Sorry, <span class="pet-tag">Bhondiiii</span>! 🥺</h1>
+      <p class="subtitle">
+        Mujhe pata hai meri <strong>bbg</strong> bahut zyada gussa hai... mera dimag thoda ghutne me hai par mera dil sirf apke paas h nn🥺. Please maan jao na bbg somli🥺💔
+      </p>
+
+      <!-- Gussa Slider -->
+      <div class="gussa-meter-box">
+        <div class="meter-label-row">
+          <span>🔥 Apne gucccce ka meter dekho🥺:</span>
+          <span class="meter-status" id="meterStatusText">100% (Bhondi gucca mode..!🔥)</span>
+        </div>
+        <input type="range" min="0" max="100" value="100" class="range-slider" id="angerSlider" />
+        <div class="slider-hint">
+          👈 Bhondiiii, slide karke apna gussa zero kar do please!🥺👉👈
+        </div>
+      </div>
+
+      <!-- Decision Prompt & Impossible NO button -->
+      <div class="decision-section">
+        <p class="question-prompt" id="questionPrompt">Will you forgive your bhonduu and give me a tight hug and kisssss? 🥺👉👈</p>
+        <div class="action-buttons-wrap" id="buttonsArea">
+          <button class="btn btn-yes" id="yesBtn">YES, Maaf Kiya! 🥰</button>
+          <button class="btn btn-no" id="noBtn">NO 😤</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Celebration State -->
+    <div id="celebrationState" class="celebration-view">
+      <div class="celebrate-badge">✨ YAAAAY! CELEBRATION TIME! ✨</div>
+      <h1 class="title" style="color: #d90429;">yeahhhhhhh Bhondiiii Maan Gayi! 🎉🥰</h1>
+      <p class="subtitle" style="font-size: 1.02rem; margin-bottom: 16px;">
+        Thank you bby! I promise ab se koi aisi galti nahi karunga jisse aap (Bhondiiii) ka mood kharab ho. You are bheerrrrryy mwahhhhh mwahh person yalll🥺👉👈 ❤️🫂
+      </p>
+
+      <!-- 💋 Special Kissiii & Photo Feature -->
+      <div class="kiss-box">
+        <div class="kiss-title">Aapne maaf kar diya toh ye lo meri taraf se ek pyari si Kissiii! 💋😘</div>
+        
+        <!-- Romantic Photo Frame -->
+        <div class="photo-frame">
+          <img id="myPhoto" src="kiss.jpeg" alt="Hamari Pyari Photo 💑" onerror="if(this.src.indexOf('kiss.jpg')===-1){this.src='kiss.jpg';}else if(this.src.indexOf('kiss.png')===-1){this.src='kiss.png';}" />
+          <div class="photo-caption">Hamesha mere sath aise hi rehna Bhondiiii ❤️</div>
+        </div>
+
+        <button class="btn btn-kiss" onclick="sendFlyingKisses()">Mwahhhh! Aur Kisses Lo 💋</button>
+      </div>
+
+      <button class="btn btn-yes" id="resetBtn" style="font-size: 0.88rem; padding: 10px 22px;">Reset Everything 🔄</button>
+    </div>
+
+  </div>
+
+  <!-- Interactive Games & Cute Extras Section -->
+  <div class="extras-section">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="feedGame">🥟 Feed Bhondiiii</button>
+      <button class="tab-btn" data-tab="popGame">💖 Pop Secrets</button>
+      <button class="tab-btn" data-tab="letter">💌 letter for my bbg </button>
+      <button class="tab-btn" data-tab="coupons">🎟️ Love Coupons</button>
+    </div>
+
+    <!-- GAME 1: Feed Bhondiiii Her Favorite Snacks -->
+    <div class="tab-pane active" id="tab-feedGame">
+      <div class="game-feed-box">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; color: #2b111c;">Feed Bhondiiii Her Cravings! 😋</h3>
+        <p class="feed-subtitle">Gusse me bhookh lagti hai! Tap any favorite snack to feed her and boost her happiness meter:</p>
+
+        <div class="feed-options">
+          <button class="food-item-btn" onclick="feedFood('Momos', '🥟', 'Hot Steamy Momos for Disha! Spicy chutney ke sath! 🥟🔥')">
+            <span>🥟</span>
+            <span class="food-label">Momos</span>
+          </button>
+          <button class="food-item-btn" onclick="feedFood('Chocolate', '🍫', 'Sweet Cadbury Chocolate for my Sweetest Bhondi! 🍫❤️')">
+            <span>🍫</span>
+            <span class="food-label">Chocolate</span>
+          </button>
+          <button class="food-item-btn" onclick="feedFood('Ice Cream', '🍦', 'Chilled Belgian Chocolate Ice Cream to cool down the gussa! 🍦❄️')">
+            <span>🍦</span>
+            <span class="food-label">Ice Cream</span>
+          </button>
+          <button class="food-item-btn" onclick="feedFood('Pizza', '🍕', 'Extra Cheese Pizza slice loaded with love! 🍕✨')">
+            <span>🍕</span>
+            <span class="food-label">Pizza</span>
+          </button>
+          <button class="food-item-btn" onclick="feedFood('Golgappe', '🫧', 'Crispy spicy Golgappe with teekha-meetha paani! 🤤❤️')">
+            <span>🫧</span>
+            <span class="food-label">Golgappe</span>
+          </button>
+        </div>
+
+        <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); display: flex; justify-content: space-between;">
+          <span>Mood Boost Level:</span>
+          <span id="stomachPercentText">25% (Still a little hungry & angry)</span>
+        </div>
+        <div class="bhondi-stomach-bar">
+          <div class="bhondi-stomach-fill" id="stomachFill"></div>
+        </div>
+        <div class="feed-reaction-text" id="feedReaction">Tap any snack above to feed Disha! 👆</div>
+      </div>
+    </div>
+
+    <!-- GAME 2: Pop the Floating Heart Secrets -->
+    <div class="tab-pane" id="tab-popGame">
+      <div style="text-align: center;">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 4px; color: #2b111c;">Catch & Pop Floating Hearts! 💖</h3>
+        <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 12px;">
+          Tap the bouncing heart inside the box to unlock a cute secret reason why I love youuuuhhhhhh:
+        </p>
+        <div class="pop-game-area" id="popArea">
+          <div class="floating-target" id="popHeart">💖</div>
+        </div>
+        <div class="pop-secret-box" id="secretText">
+          Tap the heart above to reveal secret #1! 👆
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Dil Se Written Apology Letter -->
+    <div class="tab-pane" id="tab-letter">
+      <div class="letter-paper">
+        <div class="letter-greeting">Dearest Disha (Meri Bhondiiii),</div>
+        <div class="letter-body">
+          Mujhe pata hai mai thoda hunn  aur maine fir koi aisi bewakoofi kar di jis se aaap bohot gussa ho gayi...<br><br>
+          I know tu mujhse gussa hai, and honestly I understand why. Mujhe apni mistake realise ho rahi hai. Main justify nahi karunga, bas genuinely sorry bol raha hoon. Mera intention tujhe hurt karna nahi tha, but I know intention se zyada matter karta hai ki tujhe kaisa feel hua.
+           Thoda time chahiye toh le le, I’ll respect that. Bas itna chahta hoon ki jab tu comfortable ho, hum calmly baat kar lein. loveee youuhh soo muchhhh...❤️🥺🫂
+             
+        </div>
+        <div class="letter-signature">Forever & Always Yours, <br>tumahra bahut bada wala fan hunnn..❤️🌹</div>
+      </div>
+    </div>
+
+    <!-- TAB 4: Redeemable Love Coupons for Disha -->
+    <div class="tab-pane" id="tab-coupons">
+      <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px; text-align: center;">
+        🎁 <strong>Special Peace Treaty for Disha:</strong> Tap to redeem any coupon. Screenshot it & send it to me right away!
+      </p>
+      <div class="coupons-grid">
+        <div class="coupon-card" onclick="redeemCoupon(this, 'Unlimited Hugs & Cuddles')">
+          <div>
+            <div class="coupon-title"><span>🤗</span> Infinite Hugs Pass</div>
+            <div class="coupon-desc">Valid for infinite tight hugs whenever Bhondiiii is stressed or upset.</div>
+          </div>
+          <button class="coupon-btn">Redeem Now ✨</button>
+        </div>
+
+        <div class="coupon-card" onclick="redeemCoupon(this, 'Momos & Ice Cream Treat Date')">
+          <div>
+            <div class="coupon-title"><span>🥟</span> Momos & Ice Cream Date</div>
+            <div class="coupon-desc">Unlimited Momos + your favorite dessert completely paid for by me!</div>
+          </div>
+          <button class="coupon-btn">Redeem Now ✨</button>
+        </div>
+
+        <div class="coupon-card" onclick="redeemCoupon(this, 'Bhondiiii is 100% Right Pass')">
+          <div>
+            <div class="coupon-title"><span>👑</span> 'Disha is Always Right'</div>
+            <div class="coupon-desc">In our next argument, show this pass and you automatically win without debate!</div>
+          </div>
+          <button class="coupon-btn">Redeem Now ✨</button>
+        </div>
+
+        <div class="coupon-card" onclick="redeemCoupon(this, 'Queen Pampering & Massage')">
+          <div>
+            <div class="coupon-title"><span>💆‍♀️</span> Queen Treatment</div>
+            <div class="coupon-desc">Full head massage, back scratches, and complete royal treatment.</div>
+          </div>
+          <button class="coupon-btn">Redeem Now ✨</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Floating Toast -->
+  <div class="toast-msg" id="toastMsg">Coupon Redeemed! Screenshot sent to WhatsApp 📸</div>
+
+  <!-- Linked External JavaScript File (Cache Busted) -->
+  <script src="script.js?v=3"></script>
+</body>
+</html>
